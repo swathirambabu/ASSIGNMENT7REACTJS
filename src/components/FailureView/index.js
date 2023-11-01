@@ -4,14 +4,14 @@ import {
   FailedHeading,
   FailedNote,
   RetryButton,
-} from './styledComponent'
+} from './styledComponents'
 
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 
 const FailureView = props => {
   const {onRetry} = props
 
-  onClickRetry = () => {
+  const onClickRetry = () => {
     onRetry()
   }
 

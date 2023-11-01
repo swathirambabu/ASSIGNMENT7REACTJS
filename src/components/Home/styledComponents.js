@@ -86,3 +86,11 @@ export const LoaderContainer = styled.div`
   align-items: center;
   min-height: 80vh;
 `
+export const SearchIconContainer = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #909090;
+  width: 70px;
+  border: none;
+`
