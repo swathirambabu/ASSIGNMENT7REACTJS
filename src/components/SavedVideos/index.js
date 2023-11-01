@@ -21,10 +21,13 @@ const SavedVideos = () => (
   <ThemeAndVideoContext.Consumer>
     {value => {
       const {isDarkTheme, savedVideos} = value
+      // console.log(savedVideos)
+
       const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
       const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
       const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
       const noteColor = isDarkTheme ? '#e2e8f0' : '#475569'
+
       return (
         <>
           <Header />
@@ -62,4 +65,5 @@ const SavedVideos = () => (
     }}
   </ThemeAndVideoContext.Consumer>
 )
+
 export default SavedVideos

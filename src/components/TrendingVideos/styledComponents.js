@@ -15,7 +15,6 @@ export const TrendingVideoTitle = styled.div`
   display: flex;
   align-items: center;
 `
-
 export const TitleIconContainer = styled.div`
   width: 40px;
   height: 40px;
@@ -24,12 +23,13 @@ export const TitleIconContainer = styled.div`
   margin-right: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
   @media screen and (min-width: 768px) {
     margin-left: 40px;
   }
 `
 export const TrendingText = styled.h1`
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 25px;
   color: ${props => props.color};
   @media screen and (min-width: 768px) {

@@ -4,7 +4,8 @@ import styled from 'styled-components'
 export const NavBar = styled.div`
   display: flex;
 `
-export const NavigationLogContainer = styled.div`
+
+export const NavigationLgContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,6 +18,7 @@ export const NavigationLogContainer = styled.div`
     display: none;
   }
 `
+
 export const NavOptions = styled.ul`
   display: flex;
   flex-direction: column;
@@ -25,7 +27,6 @@ export const NavOptions = styled.ul`
   padding: 0px;
   margin-top: 0px;
 `
-
 export const NavLink = styled(Link)`
   text-decoration: none;
 `
@@ -36,29 +37,28 @@ export const NavLinkContainer = styled.li`
   background-color: ${props => props.bgColor};
   padding-left: 20px;
 `
-
 export const NavText = styled.p`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 18px;
+  margin-left: 15px;
   color: ${props => props.color};
 `
+
 export const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 20px;
 `
 export const ContactHeading = styled.p`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 25px;
   font-weight: bold;
   color: ${props => props.color};
 `
-
 export const ContactIcons = styled.div`
   display: flex;
   align-items: center;
 `
-
 export const ContactImage = styled.img`
   height: 25px;
   width: 25px;
@@ -66,11 +66,10 @@ export const ContactImage = styled.img`
   margin-right: 10px;
 `
 export const ContactNote = styled.p`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 18px;
   color: ${props => props.color};
 `
-
 export const NavigationSmallContainer = styled.nav`
   display: flex;
   width: 100%;

@@ -1,15 +1,14 @@
-import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
-
-import HomeVideoCard from '../HomeVideoCard'
-
 import {
   NoVideosView,
-  NoVideoImage,
-  NoVideoHeading,
-  NoVideoNote,
+  NoVideosImage,
+  NoVideosHeading,
+  NoVideosNote,
   RetryButton,
   VideoCardList,
 } from './styledComponents'
+
+import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+import HomeVideoCard from '../HomeVideoCard'
 
 const HomeVideos = props => {
   const {homeVideos, onRetry} = props
@@ -23,27 +22,27 @@ const HomeVideos = props => {
     <ThemeAndVideoContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const headingColor = isDarkTheme ? 'f1f5f9' : '#1e293b'
+        const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
         const noteColor = isDarkTheme ? '#e2e8f0' : '#475569'
 
         return videosCount > 0 ? (
           <VideoCardList>
-            {homeVideos.map(each => (
-              <HomeVideoCard video={each} key={each.id} />
+            {homeVideos.map(eachVideo => (
+              <HomeVideoCard video={eachVideo} key={eachVideo.id} />
             ))}
           </VideoCardList>
         ) : (
           <NoVideosView>
-            <NoVideoImage
+            <NoVideosImage
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
               alt="no videos"
             />
-            <NoVideoHeading headingColor={headingColor}>
+            <NoVideosHeading headingColor={headingColor}>
               No Search results found
-            </NoVideoHeading>
-            <NoVideoNote noteColor={noteColor}>
+            </NoVideosHeading>
+            <NoVideosNote noteColor={noteColor}>
               Try different keywords or remove search filter
-            </NoVideoNote>
+            </NoVideosNote>
             <RetryButton type="button" onClick={onClickRetry}>
               Retry
             </RetryButton>
@@ -53,4 +52,5 @@ const HomeVideos = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
+
 export default HomeVideos

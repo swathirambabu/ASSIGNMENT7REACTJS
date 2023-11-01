@@ -13,11 +13,13 @@ const NotFound = () => (
   <ThemeAndVideoContext.Consumer>
     {value => {
       const {isDarkTheme} = value
+      // console.log(savedVideos)
+
       const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
       const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
       const noteColor = isDarkTheme ? '#e2e8f0' : '#475569'
 
-      const notFoundImageUrl = isDarkTheme
+      const notFindImageUrl = isDarkTheme
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
 
@@ -27,7 +29,7 @@ const NotFound = () => (
           <NavigationBar />
           <NotFoundContainer bgColor={bgColor}>
             <NotFoundVideosView>
-              <NotFoundVideosImage src={notFoundImageUrl} alt="not found" />
+              <NotFoundVideosImage src={notFindImageUrl} alt="not found" />
               <NotFoundVideosHeading headingColor={headingColor}>
                 Page Not Found
               </NotFoundVideosHeading>
@@ -41,4 +43,5 @@ const NotFound = () => (
     }}
   </ThemeAndVideoContext.Consumer>
 )
+
 export default NotFound

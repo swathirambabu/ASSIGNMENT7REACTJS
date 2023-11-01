@@ -3,14 +3,17 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
-import VideoDetailView from './components/VideoDetailsView'
+import VideoDetailView from './components/VideoDetailView'
 import TrendingVideos from './components/TrendingVideos'
 import GamingVideos from './components/GamingVideos'
 import SavedVideos from './components/SavedVideos'
 import NotFound from './components/NotFound'
 
 import ThemeAndVideoContext from './context/ThemeAndVideoContext'
+
 import './App.css'
+
+// Replace your code here
 
 class App extends Component {
   state = {
@@ -31,7 +34,7 @@ class App extends Component {
 
   addVideo = video => {
     const {savedVideos} = this.state
-    const index = savedVideos.findIndex(each => each.id === video.id)
+    const index = savedVideos.findIndex(eachVideo => eachVideo.id === video.id)
     if (index === -1) {
       this.setState({savedVideos: [...savedVideos, video]})
     } else {
@@ -50,6 +53,7 @@ class App extends Component {
 
   render() {
     const {savedVideos, isDarkTheme, activeTab} = this.state
+    // console.log(savedVideos)
     return (
       <ThemeAndVideoContext.Provider
         value={{
@@ -69,14 +73,15 @@ class App extends Component {
             path="/videos/:id"
             component={VideoDetailView}
           />
-          <ProtectedRoute exact path="trending" component={TrendingVideos} />
+          <ProtectedRoute exact path="/trending" component={TrendingVideos} />
           <ProtectedRoute exact path="/gaming" component={GamingVideos} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <Route path="/not-found" component={NotFound} />
-          <Redirect to="/not-found" />
+          <Redirect to="not-found" />
         </Switch>
       </ThemeAndVideoContext.Provider>
     )
   }
 }
+
 export default App

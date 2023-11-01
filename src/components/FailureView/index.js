@@ -33,7 +33,7 @@ const FailureView = props => {
               Oops! Something Went Wrong
             </FailedHeading>
             <FailedNote noteColor={noteColor}>
-              We are having some trouble to complete your request, <br /> Please
+              We are having some trouble to complete your request. <br /> Please
               try again later.
             </FailedNote>
             <RetryButton type="button" onClick={onClickRetry}>
@@ -45,4 +45,5 @@ const FailureView = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
+
 export default FailureView

@@ -22,26 +22,23 @@ export const NotFoundVideosView = styled.div`
   align-items: center;
   background: none;
 `
-export const NotFoundVideoImage = styled.img`
+
+export const NotFoundVideosImage = styled.img`
   width: 200px;
   @media screen and (min-width: 768px) {
     width: 450px;
   }
 `
 export const NotFoundVideosHeading = styled.h1`
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 25px;
   color: ${props => props.headingColor};
   text-align: center;
 `
+
 export const NotFoundVideosNote = styled.p`
-  font-family: roboto;
-  font-size: 25px;
+  font-family: Roboto;
+  font-size: 18px;
   color: ${props => props.noteColor};
   text-align: center;
-`
-
-export const NotFoundVideosImage = styled.img`
-  width: 40px;
-  height: 40px;
 `

@@ -23,7 +23,6 @@ export const TrendingThumbNailImage = styled.img`
     width: 300px;
   }
 `
-
 export const TrendingVideoDetails = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -38,7 +37,6 @@ export const TrendingProfileImage = styled.img`
     display: none;
   }
 `
-
 export const TrendingContentSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,22 +47,20 @@ export const TrendingContentSection = styled.div`
   }
 `
 export const TrendingTitle = styled.p`
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 15px;
   color: ${props => props.color};
 `
 export const TrendingChannelName = styled.p`
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 13px;
   color: ${props => props.color};
 `
-
 export const TrendingViewsAndDate = styled.p`
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 12px;
   color: ${props => props.color};
 `
-
 export const TrendingDot = styled.span`
   width: 20px;
   height: 20px;

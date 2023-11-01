@@ -2,6 +2,7 @@ import ReactPlayer from 'react-player'
 
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {BiListPlus} from 'react-icons/bi'
+
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 
 import {
@@ -10,7 +11,7 @@ import {
   PlayVideoStatus,
   PlayVideoStatusContainer,
   PlayVideoDot,
-  PlaySocialButtonContainer,
+  PlaySocialButtonsContainer,
   SocialButton,
   ButtonText,
   HrLine,
@@ -25,6 +26,7 @@ import {
 
 const PlayVideoView = props => {
   const {videoDetails, isLiked, isDisLiked, clickLiked, clickDisLiked} = props
+  // console.log(videoDetails)
 
   const onClickLike = () => {
     clickLiked()
@@ -38,7 +40,10 @@ const PlayVideoView = props => {
     <ThemeAndVideoContext.Consumer>
       {value => {
         const {isDarkTheme, addVideo, savedVideos} = value
+        // const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
         const textColor = isDarkTheme ? '#64748b' : '#231f20'
+        const likeIconColor = isLiked ? '#2563eb' : '#64748b'
+        const dislikeIconColor = isDisLiked ? '#2563eb' : '#64748b'
         let isSaved
         const index = savedVideos.findIndex(
           eachVideo => eachVideo.id === videoDetails.id,
@@ -67,11 +72,11 @@ const PlayVideoView = props => {
                 <PlayVideoDot> &#8226; </PlayVideoDot>
                 {videoDetails.publishedAt}
               </PlayVideoStatus>
-              <PlaySocialButtonContainer>
+              <PlaySocialButtonsContainer>
                 <BtnContainer>
                   <SocialButton
                     type="button"
-                    color={isLiked ? '#2563eb' : '#64748b'}
+                    color={likeIconColor}
                     onClick={onClickLike}
                   >
                     <AiOutlineLike size={25} />
@@ -81,7 +86,7 @@ const PlayVideoView = props => {
                 <BtnContainer>
                   <SocialButton
                     type="button"
-                    color={isDisLiked ? '#2563eb' : '#64748b'}
+                    color={dislikeIconColor}
                     onClick={onClickDislike}
                   >
                     <AiOutlineDislike size={25} />
@@ -98,7 +103,7 @@ const PlayVideoView = props => {
                     <ButtonText>{isSaved ? 'Saved' : 'Save'}</ButtonText>
                   </SocialButton>
                 </BtnContainer>
-              </PlaySocialButtonContainer>
+              </PlaySocialButtonsContainer>
             </PlayVideoStatusContainer>
             <HrLine />
             <ChannelContainer>
@@ -122,4 +127,5 @@ const PlayVideoView = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
+
 export default PlayVideoView

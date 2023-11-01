@@ -6,7 +6,6 @@ export const AppContainer = styled.div`
   align-items: center;
   min-height: 100vh;
 `
-
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -15,8 +14,9 @@ export const FormContainer = styled.form`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 350px;
 `
+
 export const LoginLogo = styled.img`
-  width: 100px;
+  width: 180px;
   align-self: center;
   margin-bottom: 15px;
 `
@@ -31,29 +31,29 @@ export const LoginButton = styled.button`
   background-color: #4f46e5;
   border: none;
   border-radius: 5px;
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 15px;
   height: 30px;
-  color: white;
+  color: #ffffff;
   margin-top: 20px;
 `
 
 export const SubmitError = styled.p`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 12px;
   color: #ff0b37;
 `
 
 export const InputLabel = styled.label`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 12px;
   color: #475569;
   font-weight: 500;
 `
 
 export const UserInput = styled.input`
-  font-family: roboto;
-  font-size: 12px;
+  font-family: 'Roboto';
+  font-size: 15px;
   color: #475569;
   outline: none;
   padding: 8px;
@@ -68,15 +68,13 @@ export const CheckboxContainer = styled.div`
   align-items: center;
   margin: 12px;
 `
-
 export const Checkbox = styled.input`
   width: 15px;
   height: 15px;
   margin-right: 5px;
 `
-
 export const ShowPassword = styled.label`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 15px;
   color: #1e293b;
 `

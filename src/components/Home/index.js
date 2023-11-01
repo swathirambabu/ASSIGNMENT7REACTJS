@@ -1,7 +1,9 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+
 import {AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
+
 import Header from '../Header'
 import NavigationBar from '../NavigationBar'
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
@@ -56,14 +58,15 @@ class Home extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const data = await response.json()
-      const updatedData = data.videos.map(each => ({
-        id: each.id,
-        title: each.title,
-        thumbnailUrl: each.thumbnail_url,
-        viewCount: each.view_count,
-        publishedAt: each.published_at,
-        name: each.channel.name,
-        profileImageUrl: each.channel.profile_image_url,
+      // console.log(data)
+      const updatedData = data.videos.map(eachVideo => ({
+        id: eachVideo.id,
+        title: eachVideo.title,
+        thumbnailUrl: eachVideo.thumbnail_url,
+        viewCount: eachVideo.view_count,
+        publishedAt: eachVideo.published_at,
+        name: eachVideo.channel.name,
+        profileImageUrl: eachVideo.channel.profile_image_url,
       }))
       this.setState({
         homeVideos: updatedData,
@@ -127,7 +130,6 @@ class Home extends Component {
 
           const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
-
           const display = bannerDisplay === 'flex' ? 'flex' : 'none'
 
           return (
@@ -179,4 +181,5 @@ class Home extends Component {
     )
   }
 }
+
 export default Home

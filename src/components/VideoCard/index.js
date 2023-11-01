@@ -1,4 +1,7 @@
+// import {Link} from 'react-router-dom'
+
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+
 import {
   ItemLink,
   TrendingListItem,
@@ -18,7 +21,7 @@ const VideoCard = props => {
     id,
     title,
     thumbnailUrl,
-    viewsCount,
+    viewCount,
     publishedAt,
     name,
     profileImageUrl,
@@ -48,7 +51,7 @@ const VideoCard = props => {
                     {name}
                   </TrendingChannelName>
                   <TrendingViewsAndDate color={textColor}>
-                    {viewsCount} views<TrendingDot> &#8226;</TrendingDot>
+                    {viewCount} views<TrendingDot> &#8226; </TrendingDot>
                     {publishedAt}
                   </TrendingViewsAndDate>
                 </TrendingContentSection>
@@ -60,4 +63,5 @@ const VideoCard = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
+
 export default VideoCard

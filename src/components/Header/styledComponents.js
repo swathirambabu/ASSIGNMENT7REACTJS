@@ -30,10 +30,14 @@ export const ActionsContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
 `
-
 export const ThemeButton = styled.button`
+  background: none;
+  border: none;
+  margin-right: 10px;
+`
+export const LogoutButton = styled.button`
   border: 1px solid;
-  font-family: roboto;
+  font-family: 'Roboto';
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -41,12 +45,12 @@ export const ThemeButton = styled.button`
   border-radius: 5px;
   background-color: ${props => props.bgColor};
   color: ${props => props.color};
+  border-color: ${props => props.color};
   margin-left: 6px;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `
-
 export const LogoutIconButton = styled.button`
   background: none;
   border: none;
@@ -59,7 +63,6 @@ export const ProfileImage = styled.img`
   height: 30px;
   margin-right: 10px;
 `
-
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,7 +77,6 @@ export const ModalContainer = styled.div`
     width: 400px;
   }
 `
-
 export const CloseButton = styled.button`
   background-color: transparent;
   border: 1px solid grey;
@@ -86,7 +88,7 @@ export const CloseButton = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 6px;
-  font-family: roboto;
+  font-family: Roboto;
   font-weight: bold;
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -96,37 +98,19 @@ export const CloseButton = styled.button`
     padding-left: 20px;
   }
 `
-
-export const LogoutButton = styled.button`
-  border: 1px solid;
-  font-family: roboto;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 5px;
-  border-color: ${props => props.color};
-  color: ${props => props.color};
-  background-color: ${props => props.bgColor};
-  margin-left: 6px;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-`
-
 export const ConfirmButton = styled.button`
   align-self: flex-end;
   background-color: #3b82f6;
   color: white;
   padding: 8px;
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
   border: 1px solid #3b82f6;
   margin: 10px;
   outline: none;
   cursor: pointer;
   border-radius: 6px;
-  font-family: roboto;
+  font-family: Roboto;
   font-weight: bold;
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -136,9 +120,8 @@ export const ConfirmButton = styled.button`
     padding-left: 20px;
   }
 `
-
 export const ModalDesc = styled.p`
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 15px;
   margin: 10px;
   color: black;
@@ -152,7 +135,6 @@ export const ButtonsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `
-
 export const LogoLink = styled(Link)`
   text-decoration: none;
 `

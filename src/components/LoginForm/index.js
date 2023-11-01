@@ -19,6 +19,7 @@ import {
 class LoginForm extends Component {
   state = {
     username: '',
+    password: '',
     showPassword: false,
     showSubmitError: false,
     errorMsg: '',
@@ -28,14 +29,17 @@ class LoginForm extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  onShowPassword = () => {
+  OnShowPassword = () => {
     this.setState(prevState => ({showPassword: !prevState.showPassword}))
   }
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
 
-    Cookies.set('jwt_token', jwtToken, {expires: 30, path: '/'})
+    Cookies.set('jwt_token', jwtToken, {
+      expires: 30,
+      path: '/',
+    })
     history.replace('/')
   }
 
@@ -80,12 +84,10 @@ class LoginForm extends Component {
 
   renderPasswordField = () => {
     const {password, showPassword} = this.state
-
     const inputType = showPassword ? 'text' : 'password'
-
     return (
       <>
-        <InputLabel htmlFor="password">USERNAME</InputLabel>
+        <InputLabel htmlFor="password">PASSWORD</InputLabel>
         <UserInput
           type={inputType}
           id="password"
@@ -98,7 +100,7 @@ class LoginForm extends Component {
           <Checkbox
             type="checkbox"
             id="checkbox"
-            onChange={this.onShowPassword}
+            onChange={this.OnShowPassword}
           />
           <ShowPassword htmlFor="checkbox">Show Password</ShowPassword>
         </CheckboxContainer>
@@ -112,7 +114,6 @@ class LoginForm extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
-
     return (
       <AppContainer>
         <FormContainer onSubmit={this.submitForm}>
@@ -129,4 +130,5 @@ class LoginForm extends Component {
     )
   }
 }
+
 export default LoginForm

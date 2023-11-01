@@ -1,3 +1,5 @@
+// import {Link} from 'react-router-dom'
+
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 
 import {
@@ -9,7 +11,7 @@ import {
   GamingViewsAndDate,
 } from './styledComponents'
 
-const GameVideoCard = props => {
+const VideoCard = props => {
   const {videoDetails} = props
   const {id, title, thumbnailUrl, viewCount} = videoDetails
 
@@ -20,13 +22,13 @@ const GameVideoCard = props => {
         const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
 
         return (
-          <ItemLink to={`videos/${id}`} className="link">
+          <ItemLink to={`/videos/${id}`} className="link">
             <GamingListItem>
               <GamingThumbNailImage src={thumbnailUrl} alt="video thumbnail" />
               <GamingContentSection>
                 <GamingTitle color={textColor}>{title}</GamingTitle>
                 <GamingViewsAndDate color={textColor}>
-                  {viewCount}
+                  {viewCount} Watching Worldwide
                 </GamingViewsAndDate>
               </GamingContentSection>
             </GamingListItem>
@@ -36,4 +38,5 @@ const GameVideoCard = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
-export default GameVideoCard
+
+export default VideoCard

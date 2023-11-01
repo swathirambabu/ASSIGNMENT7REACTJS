@@ -39,6 +39,7 @@ const Header = props => (
         Cookies.remove('jwt_token')
         history.replace('/login')
       }
+
       return (
         <NavbarHeader bgColor={bgColor}>
           <LogoLink to="/">
@@ -128,4 +129,5 @@ const Header = props => (
     }}
   </ThemeAndVideoContext.Consumer>
 )
+
 export default withRouter(Header)

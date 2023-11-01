@@ -8,16 +8,15 @@ import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 import FailureView from '../FailureView'
 import PlayVideoView from '../PlayVideoView'
 
-import {VideoDetailsViewContainer, LoaderContainer} from './styledComponents'
+import {VideoDetailViewContainer, LoaderContainer} from './styledComponents'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
-  inProgress: 'INPROGRESS',
+  inProgress: 'IN_PROGRESS',
 }
-
-class VideoDetailsView extends Component {
+class VideoDetailView extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     videoDetails: [],
@@ -37,9 +36,9 @@ class VideoDetailsView extends Component {
     viewCount: data.video_details.view_count,
     publishedAt: data.video_details.published_at,
     description: data.video_details.description,
-    name: data.video_details.channel_name,
+    name: data.video_details.channel.name,
     profileImageUrl: data.video_details.channel.profile_image_url,
-    subscribersCount: data.video_details.channel.subscriber_count,
+    subscriberCount: data.video_details.channel.subscriber_count,
   })
 
   getVideoDetails = async () => {
@@ -48,8 +47,8 @@ class VideoDetailsView extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-
-    const {jwtToken} = Cookies.get('jwt_token')
+    // console.log(id)
+    const jwtToken = Cookies.get('jwt_token')
 
     const url = `https://apis.ccbp.in/videos/${id}`
     const options = {
@@ -61,6 +60,7 @@ class VideoDetailsView extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const data = await response.json()
+      // console.log(data)
       const updatedData = this.formattedData(data)
       this.setState({
         videoDetails: updatedData,
@@ -131,18 +131,18 @@ class VideoDetailsView extends Component {
       <ThemeAndVideoContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const {bgColor} = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
           return (
             <>
               <Header />
               <NavigationBar />
-              <VideoDetailsViewContainer
+              <VideoDetailViewContainer
                 data-testid="videoItemDetails"
                 bgColor={bgColor}
               >
                 {this.renderVideoDetailView()}
-              </VideoDetailsViewContainer>
+              </VideoDetailViewContainer>
             </>
           )
         }}
@@ -150,4 +150,5 @@ class VideoDetailsView extends Component {
     )
   }
 }
-export default VideoDetailsView
+
+export default VideoDetailView

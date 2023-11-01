@@ -1,12 +1,15 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+
 import {HiFire} from 'react-icons/hi'
+
 import Header from '../Header'
 import NavigationBar from '../NavigationBar'
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 import FailureView from '../FailureView'
 import VideoCard from '../VideoCard'
+
 import {
   TrendingContainer,
   TitleIconContainer,
@@ -20,7 +23,7 @@ const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
-  inProgress: 'INPROGRESS',
+  inProgress: 'IN_PROGRESS',
 }
 
 class TrendingVideos extends Component {
@@ -46,14 +49,15 @@ class TrendingVideos extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const data = await response.json()
-      const updatedData = data.videos.map(each => ({
-        id: each.id,
-        title: each.title,
-        thumbnailUrl: each.thumbnail_url,
-        viewCount: each.view_count,
-        publishedAt: each.published_at,
-        name: each.channel_name,
-        profileImageUrl: each.channel.profile_image_url,
+      // console.log(data)
+      const updatedData = data.videos.map(eachVideo => ({
+        id: eachVideo.id,
+        title: eachVideo.title,
+        thumbnailUrl: eachVideo.thumbnail_url,
+        viewCount: eachVideo.view_count,
+        publishedAt: eachVideo.published_at,
+        name: eachVideo.channel.name,
+        profileImageUrl: eachVideo.channel.profile_image_url,
       }))
       this.setState({
         trendingVideos: updatedData,
@@ -74,8 +78,8 @@ class TrendingVideos extends Component {
     const {trendingVideos} = this.state
     return (
       <TrendingVideoList>
-        {trendingVideos.map(each => (
-          <VideoCard key={each.id} videoDetails={each} />
+        {trendingVideos.map(eachVideo => (
+          <VideoCard key={eachVideo.id} videoDetails={eachVideo} />
         ))}
       </TrendingVideoList>
     )
@@ -106,7 +110,7 @@ class TrendingVideos extends Component {
     return (
       <ThemeAndVideoContext.Consumer>
         {value => {
-          const {isDarkTheme, toggleTheme} = value
+          const {isDarkTheme} = value
 
           const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
@@ -115,18 +119,14 @@ class TrendingVideos extends Component {
             <div data-testid="trending">
               <Header />
               <NavigationBar />
-              <TrendingContainer
-                data-testid="trending"
-                style={{backgroundColor: bgColor}}
-                onClick={toggleTheme}
-              >
+              <TrendingContainer data-testid="trending" bgColor={bgColor}>
                 <TrendingVideoTitle>
                   <TitleIconContainer>
                     <HiFire size={35} color="#ff0000" />
                   </TitleIconContainer>
                   <TrendingText color={textColor}>Trending</TrendingText>
                 </TrendingVideoTitle>
-                {this.renderTrendingVideos}
+                {this.renderTrendingVideos()}
               </TrendingContainer>
             </div>
           )
@@ -135,4 +135,5 @@ class TrendingVideos extends Component {
     )
   }
 }
+
 export default TrendingVideos

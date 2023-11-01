@@ -7,7 +7,7 @@ import {CgPlayListAdd} from 'react-icons/cg'
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
 
 import {
-  NavigationLogContainer,
+  NavigationLgContainer,
   NavOptions,
   NavLink,
   NavLinkContainer,
@@ -22,7 +22,9 @@ import {
 } from './styledComponents'
 
 class NavigationBar extends Component {
-  renderTabItem = () => (
+  // const onClickTab = () => {}
+
+  renderTabItems = () => (
     <ThemeAndVideoContext.Consumer>
       {value => {
         const {isDarkTheme, activeTab, changeTab} = value
@@ -33,22 +35,19 @@ class NavigationBar extends Component {
         const onClickTabHome = () => {
           changeTab('Home')
         }
-
         const onClickTabTrending = () => {
           changeTab('Trending')
         }
-
         const onClickTabGaming = () => {
           changeTab('Gaming')
         }
-
         const onClickTabSaved = () => {
           changeTab('Saved')
         }
 
         return (
           <NavBar>
-            <NavigationLogContainer bgColor={bgColor}>
+            <NavigationLgContainer bgColor={bgColor}>
               <NavOptions>
                 <NavLink to="/">
                   <NavLinkContainer
@@ -81,7 +80,7 @@ class NavigationBar extends Component {
                 <NavLink to="/gaming">
                   <NavLinkContainer
                     key="gaming"
-                    bgColor={activeTab === 'gaming' ? activeTabBg : 'none'}
+                    bgColor={activeTab === 'Gaming' ? activeTabBg : 'none'}
                     onClick={onClickTabGaming}
                   >
                     <SiYoutubegaming
@@ -106,30 +105,27 @@ class NavigationBar extends Component {
                   </NavLinkContainer>
                 </NavLink>
               </NavOptions>
-
               <ContactInfo>
                 <ContactHeading color={textColor}>CONTACT US</ContactHeading>
                 <ContactIcons>
                   <ContactImage
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-                    alt="facebbok logo"
+                    alt="facebook logo"
                   />
-
                   <ContactImage
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
                     alt="twitter logo"
                   />
-
                   <ContactImage
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
                     alt="linked in logo"
                   />
                 </ContactIcons>
                 <ContactNote color={textColor}>
-                  Enjoy! Now we to see your channels and recommendations!
+                  Enjoy! Now to see your channels and recommendations!
                 </ContactNote>
               </ContactInfo>
-            </NavigationLogContainer>
+            </NavigationLgContainer>
             <NavigationSmallContainer bgColor={bgColor}>
               <NavLink to="/">
                 <AiFillHome
@@ -138,21 +134,21 @@ class NavigationBar extends Component {
                   color={activeTab === 'Home' ? '#ff0b37' : '#909090'}
                 />
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="/trending">
                 <HiFire
                   size={30}
                   onClick={onClickTabTrending}
                   color={activeTab === 'Trending' ? '#ff0b37' : '#909090'}
                 />
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="/gaming">
                 <SiYoutubegaming
                   size={30}
                   onClick={onClickTabGaming}
                   color={activeTab === 'Gaming' ? '#ff0b37' : '#909090'}
                 />
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="/saved-videos">
                 <CgPlayListAdd
                   size={30}
                   onClick={onClickTabSaved}
@@ -167,7 +163,7 @@ class NavigationBar extends Component {
   )
 
   render() {
-    return <>{this.renderTabItem()}</>
+    return <>{this.renderTabItems()}</>
   }
 }
 export default NavigationBar

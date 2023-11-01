@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import {SiYoutubegaming} from 'react-icons/si'
+
 import Header from '../Header'
 import NavigationBar from '../NavigationBar'
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
@@ -48,11 +49,12 @@ class GamingVideos extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const data = await response.json()
-      const updatedData = data.videos.map(each => ({
-        id: each.id,
-        title: each.title,
-        thumbnailUrl: each.thumbnailUrl,
-        viewCount: each.view_count,
+      // console.log(data)
+      const updatedData = data.videos.map(eachVideo => ({
+        id: eachVideo.id,
+        title: eachVideo.title,
+        thumbnailUrl: eachVideo.thumbnail_url,
+        viewCount: eachVideo.view_count,
       }))
       this.setState({
         gamingVideos: updatedData,
@@ -73,8 +75,8 @@ class GamingVideos extends Component {
     const {gamingVideos} = this.state
     return (
       <GamingVideoList>
-        {gamingVideos.map(each => (
-          <GameVideoCard key={each.id} videoDetails={each} />
+        {gamingVideos.map(eachVideo => (
+          <GameVideoCard key={eachVideo.id} videoDetails={eachVideo} />
         ))}
       </GamingVideoList>
     )
@@ -108,7 +110,7 @@ class GamingVideos extends Component {
           const {isDarkTheme} = value
 
           const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
-          const textColor = isDarkTheme ? '#f9f9f9' : '231f20'
+          const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
 
           return (
             <div>
@@ -117,11 +119,11 @@ class GamingVideos extends Component {
               <GamingContainer data-testid="gaming" bgColor={bgColor}>
                 <GamingVideoTitle>
                   <GamingTitleIconContainer>
-                    <SiYoutubegaming size={35} color="ff0000" />
+                    <SiYoutubegaming size={35} color="#ff0000" />
                   </GamingTitleIconContainer>
                   <GamingText color={textColor}>Gaming</GamingText>
                 </GamingVideoTitle>
-                {this.renderTrendingVideos}
+                {this.renderTrendingVideos()}
               </GamingContainer>
             </div>
           )
@@ -130,4 +132,5 @@ class GamingVideos extends Component {
     )
   }
 }
+
 export default GamingVideos

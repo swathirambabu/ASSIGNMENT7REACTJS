@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom'
+
 import ThemeAndVideoContext from '../../context/ThemeAndVideoContext'
+
 import {
   ListItem,
   ThumbNailImage,
@@ -12,6 +14,8 @@ import {
   Dot,
 } from './styledComponents'
 
+import './index.css'
+
 const HomeVideoCard = props => {
   const {video} = props
   const {
@@ -21,7 +25,7 @@ const HomeVideoCard = props => {
     viewCount,
     publishedAt,
     name,
-    ProfileImageUrl,
+    profileImageUrl,
   } = video
 
   return (
@@ -35,13 +39,12 @@ const HomeVideoCard = props => {
             <ListItem>
               <ThumbNailImage src={thumbnailUrl} alt="video thumbnail" />
               <VideoDetails>
-                <ProfileImage src={ProfileImageUrl} alt="channel logo" />
+                <ProfileImage src={profileImageUrl} alt="channel logo" />
                 <ContentSection>
                   <Title color={textColor}>{title}</Title>
                   <ChannelName color={textColor}>{name}</ChannelName>
                   <ViewsAndDate color={textColor}>
-                    {viewCount} views<Dot> &#8226;</Dot>
-                    {publishedAt}
+                    {viewCount} views<Dot> &#8226; </Dot> {publishedAt}
                   </ViewsAndDate>
                 </ContentSection>
               </VideoDetails>
@@ -52,4 +55,5 @@ const HomeVideoCard = props => {
     </ThemeAndVideoContext.Consumer>
   )
 }
+
 export default HomeVideoCard
